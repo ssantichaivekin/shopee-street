@@ -2,10 +2,10 @@ import csv
 import pprint
 from collections import defaultdict
 
-with open('scl-2021-ds/train.csv') as csv_file:
+with open('../scl-2021-ds/train.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     first_line = False
-    no_expand = defaultdict(int)
+    exact_address = {}
     for row in csv_reader:
         if first_line == True:
             first_line = False
@@ -18,12 +18,12 @@ with open('scl-2021-ds/train.csv') as csv_file:
         actual_address = actual_address.replace(',', '')
         actual_address = actual_address.split()
 
-        for address_word in actual_address:
-            for word in raw_words:
-                if word == address_word:
-                    no_expand[word] += 1
+        for word in raw_words:
+            if word not in exact_address:
+                exact_address[word] = True
+            if word not in actual_address:
+                exact_address[word] = False
 
-pp = pprint.PrettyPrinter(indent=4)
-no_expand_list = list(no_expand.items())
-no_expand_list.sort(key = lambda tup: tup[1], reverse=True)
-pp.pprint(no_expand_list)
+for k,v in exact_address.items():
+    if v == True:
+        print(k)
