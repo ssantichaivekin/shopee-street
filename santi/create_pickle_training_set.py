@@ -8,7 +8,7 @@ Output Format:
 ]
 """
 
-DATA_PATH = './santi/train_split_clean.csv'
+DATA_PATH = './scl-2021-ds/train_split.csv'
 CSV_OUT_PATH = './santi/deepparse_clean_only_train_split.csv'
 PICKLE_OUT_PATH = './santi/deepparse_clean_only_train_split.p'
 
@@ -16,7 +16,7 @@ def match_percent(source_list, pattern_list):
     assert(len(source_list) == len(pattern_list))
     count_match = 0
     for source_word, pattern_word in zip(source_list, pattern_list):
-        if source_word == pattern_word:
+        if source_word in pattern_word or pattern_word in source_word:
             count_match += 1
     return count_match / len(source_list)
 
@@ -43,35 +43,42 @@ def tag(address, poi, street):
 
     if poi_word_list:
         matching_poi_range = find_matching_range(address_word_list, poi_word_list)
-        if matching_poi_range is not None:
-            poi_start, poi_end = matching_poi_range
-            for i in range(poi_start, poi_end):
-                labels[i] = 'PointOfInterest'
+        if matching_poi_range is None:
+            return None
+        poi_start, poi_end = matching_poi_range
+        for i in range(poi_start, poi_end):
+            labels[i] = 'PointOfInterest'
     
     if street_word_list:
         matching_street_range = find_matching_range(address_word_list, street_word_list)
-        if matching_street_range is not None:
-            street_start, street_end = matching_street_range
-            for i in range(street_start, street_end):
-                labels[i] = 'Street'
+        if matching_street_range is None:
+            return None
+        street_start, street_end = matching_street_range
+        for i in range(street_start, street_end):
+            labels[i] = 'Street'
     
     return labels
 
 def tag_row(row):
-    if row['is_clean']:
-        sanitized_raw_address = row['sanitized_raw_address']
-        poi, street = row['POI/street'].split('/')
-        labels = tag(sanitized_raw_address, poi, street)
-        return labels
-    return None
+    sanitized_raw_address = row['sanitized_raw_address']
+    poi, street = row['POI/street'].split('/')
+    labels = tag(sanitized_raw_address, poi, street)
+    return labels
+
+def sanitize(row):
+    raw_address = row['raw_address']
+    sanitized_raw_address = raw_address.replace(',', ' ,')
+    return sanitized_raw_address
 
 import pandas as pd
 import pickle
 from itertools import islice
 
 df = pd.read_csv(DATA_PATH)
+del df['Unnamed: 0']
+df['sanitized_raw_address'] = df.apply(sanitize, axis=1)
 df['labels'] = df.apply(tag_row, axis=1)
-df.to_csv(CSV_OUT_PATH)
+df.to_csv(CSV_OUT_PATH, index=False)
 
 pickle_data = []
 for i, row in islice(df.iterrows(), 1, None):
