@@ -1,0 +1,59 @@
+['id', 'raw_address', 'POI/street']
+['0', 'jl kapuk timur delta sili iii lippo cika 11 a cicau cikarang pusat', '/jl kapuk timur delta sili iii lippo cika']
+['1', 'aye, jati sampurna', '/']
+['2', 'setu siung 119 rt 5 1 13880 cipayung', '/siung']
+['3', 'toko dita, kertosono', 'toko dita/']
+['4', 'jl. orde baru', '/jl. orde baru']
+['5', 'raya samb gede, 299 toko bb kids', 'toko bb kids/raya samb gede']
+['6', 'kem mel raya, no 4 bojong rawalumbu rt 1 36 rawalumbu', '/kem mel raya']
+['7', 'kem tela keuramat kuta alam', '/tela']
+['8', 'gg. i wates magersari', '/gg. i']
+['9', 'bunga ncole ix 2', '/bunga ncole ix']
+['10', 'cikahuripan sd neg boj 02 klap boj, no 5 16877', 'sd negeri bojong 02/klap boj']
+['11', 'yaya atohar,', 'yayasan atohariyah/']
+['12', 'abim ix 24 5', '/abim ix']
+['13', 'gang xiii rungkut', '/gang xiii']
+['14', 'kamp utan jaya, 23 rt 3 rw 8 16433 beji', '/']
+['15', 'kampung.gudang areng,desa:anyer, kecamatan:anyar, kabupaten: serang, belakang bca anyar', 'gudang areng/']
+['16', 'maru baru 2 18 marunda rt 13 3 cilincing', '/maru baru 2']
+['17', 'pangkalan lareh kel.ikurkoto koto panjang.kec koto tangah kota padang', 'pangkalan lareh/']
+['18', 'tanah sereal pekap raya 5 rt 9 4 11210 tambora', '/pekap raya']
+['19', 'tam tama barat v, banyumanik', '/tam tama barat v']
+['20', 'toko bang ajs,', 'toko bangunan ajs/']
+['21', 'stadion kobelete,', 'stadion kobelete/']
+['22', 'tam asri, gg. 7 16 6 morokrembangan krembangan', '/tam asri, gg. 7']
+jl
+kapuk
+timur
+delta
+sili
+iii
+lippo
+cika
+siung
+jl.
+orde
+baru
+raya
+samb
+gede
+mel
+tela
+gg.
+i
+bunga
+ncole
+ix
+boj
+klap
+abim
+gang
+xiii
+maru
+pekap
+tam
+tama
+barat
+v
+asri
+7
