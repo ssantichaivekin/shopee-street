@@ -9,8 +9,8 @@ Output Format:
 """
 
 DATA_PATH = './santi/train_split_clean.csv'
-CSV_OUT_PATH = './santi/deepprase_clean_only_train_split.csv'
-PICKLE_OUT_PATH = './santi/deepprase_clean_only_train_split.p'
+CSV_OUT_PATH = './santi/deepparse_clean_only_train_split.csv'
+PICKLE_OUT_PATH = './santi/deepparse_clean_only_train_split.p'
 
 def match_percent(source_list, pattern_list):
     assert(len(source_list) == len(pattern_list))

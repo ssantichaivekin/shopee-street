@@ -1,0 +1,3 @@
+[submodule "deepparse-shopee"]
+	path = deepparse-shopee
+	url = https://github.com/ssantichaivekin/deepparse-shopee
